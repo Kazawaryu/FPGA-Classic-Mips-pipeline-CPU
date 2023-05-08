@@ -1,0 +1,151 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.4 (win64) Build 2086221 Fri Dec 15 20:55:39 MST 2017
+| Date         : Thu May 26 01:33:17 2022
+| Host         : LAPTOP-UC0KOE91 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7a100t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Flip-Flop Distribution
+3. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    79 |
+| Unused register locations in slices containing registers |   186 |
++----------------------------------------------------------+-------+
+
+
+2. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |              41 |           20 |
+| No           | No                    | Yes                    |             100 |           31 |
+| No           | Yes                   | No                     |              58 |           25 |
+| Yes          | No                    | No                     |              97 |           44 |
+| Yes          | No                    | Yes                    |              94 |           35 |
+| Yes          | Yes                   | No                     |             920 |          421 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+3. Detailed Control Set Information
+-----------------------------------
+
++--------------------------------------+------------------------------+------------------------------+------------------+----------------+
+|             Clock Signal             |         Enable Signal        |       Set/Reset Signal       | Slice Load Count | Bel Load Count |
++--------------------------------------+------------------------------+------------------------------+------------------+----------------+
+|  key_clk                             |                              |                              |                1 |              3 |
+|  LightSeg/clk_out                    |                              | rst_IBUF                     |                1 |              4 |
+|  key_clk                             | keyboardu/p_0_in[8]          | rst_IBUF                     |                2 |              4 |
+|  key_clk                             | keyboardu/p_0_in[1]          | rst_IBUF                     |                2 |              4 |
+|  key_clk                             | keyboardu/p_0_in[4]          | rst_IBUF                     |                2 |              4 |
+|  key_clk                             | keyboardu/p_0_in[12]         | rst_IBUF                     |                1 |              4 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[2][25]    | ifetc/register_reg[2][25]_0  |                4 |              4 |
+| ~cpuclk/inst/clk_out1                | ifetc/PC[31]_i_1_n_0         | rst_IBUF                     |                2 |              4 |
+| ~cpuclk/inst/clk_out1                |                              |                              |                3 |              4 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[19][26]_0 |                              |                2 |              4 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[15][30]   | ifetc/register_reg[15][2]_0  |                3 |              4 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[25][29]_0 | ifetc/register_reg[25][7]_0  |                2 |              4 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[26][31]   |                              |                2 |              4 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[14][31]   | ifetc/register_reg[14][4]_0  |                2 |              4 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[15][30]   |                              |                3 |              5 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[25][29]_0 | ifetc/register_reg[25][22]_0 |                2 |              5 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[27][20]   |                              |                3 |              5 |
+|  keyboardu/next_state_reg[5]_i_2_n_0 |                              |                              |                2 |              6 |
+|  cpuclk/inst/clk_out1                | ifetc/Segment_num_reg[26][2] | rst_IBUF                     |                2 |              6 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[14][31]   | ifetc/register_reg[14][7]_3  |                2 |              6 |
+| ~LightSeg/scan_cnt[3]                |                              |                              |                3 |              7 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[25][29]_0 |                              |                3 |              7 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[3][31]    | ifetc/register_reg[3][5]_0   |                4 |              7 |
+|  key_clk                             | keyboardu/col[3]_i_1_n_0     | rst_IBUF                     |                2 |              8 |
+|  key_clk                             | keyboardu/col_val            |                              |                2 |              8 |
+|  cpuclk/inst/clk_out1                | ifetc/led_reg[16][1]         | rst_IBUF                     |                3 |              8 |
+|  cpuclk/inst/clk_out1                | ifetc/Segment_num_reg[26][1] | rst_IBUF                     |                3 |              8 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[27][20]   | ifetc/register_reg[27][1]    |                6 |              8 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[27][20]   | ifetc/register_reg[27][5]    |                7 |              9 |
+|  key_clk                             |                              | rst_IBUF                     |                3 |             10 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[27][20]   | ifetc/register_reg[27][0]    |                5 |             10 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[2][25]    | ifetc/register_reg[2][0]     |                6 |             11 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[30][31]_0 | ifetc/register_reg[30][0]_0  |                8 |             13 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[7][31]    | ifetc/register_reg[7][0]     |                7 |             13 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[4][31]    | ifetc/register_reg[4][0]     |                7 |             13 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[16][31]   | ifetc/register_reg[16][0]    |                4 |             13 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[22][31]   | ifetc/register_reg[22][4]    |                8 |             13 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[26][31]   | ifetc/register_reg[26][5]    |                5 |             13 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[2][25]    | ifetc/register_reg[2][3]     |                5 |             14 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[26][31]   | ifetc/register_reg[26][26]_0 |                4 |             15 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[8][30]    | ifetc/register_reg[8][1]     |                7 |             15 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[1][31]    | ifetc/register_reg[1][0]_0   |                5 |             15 |
+|  cpuclk/inst/clk_out1                | ifetc/Segment_num_reg[26][0] | rst_IBUF                     |                5 |             16 |
+|  cpuclk/inst/clk_out1                | ifetc/led_reg[16][0]         | rst_IBUF                     |                4 |             16 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[25][29]_0 | ifetc/register_reg[25][0]    |                5 |             16 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[4][31]    | ifetc/register_reg[4][1]     |                5 |             16 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[8][30]    | ifetc/register_reg[8][0]     |               14 |             16 |
+| ~cpuclk/inst/clk_out1                | ifetc/io_data_reg[15][0]     | rst_IBUF                     |                9 |             16 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[1][31]    | ifetc/register_reg[1][1]     |                6 |             16 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[30][31]_0 | ifetc/register_reg[30][31]   |               11 |             18 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[22][31]   | ifetc/register_reg[22][0]_0  |                7 |             19 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[7][31]    | ifetc/register_reg[7][1]_0   |               13 |             19 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[16][31]   | ifetc/register_reg[16][1]    |                9 |             19 |
+|  cpuclk/inst/clk_out1                |                              |                              |               11 |             21 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[14][31]   | ifetc/register_reg[14][0]    |                7 |             21 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[15][30]   | ifetc/register_reg[15][0]    |                8 |             23 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[3][31]    | ifetc/register_reg[3][0]     |                9 |             25 |
+| ~cpuclk/inst/clk_out1                |                              | rst_IBUF                     |                9 |             26 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[19][26]_0 | ifetc/register_reg[19][0]    |               12 |             28 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[5][31]    | ifetc/register_reg[5][0]     |                9 |             29 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[24][30]   | ifetc/register_reg[24][0]    |               11 |             29 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[11][31]   | ifetc/register_reg[11][0]    |               16 |             31 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[29][31]_0 | ifetc/register_reg[29][31]   |               17 |             31 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[21][31]   | ifetc/register_reg[21][0]    |                8 |             31 |
+|  cpuclk/inst/clk_out1                |                              | ifetc/register_reg[0][31]    |               16 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[10][31]   | ifetc/register_reg[10][0]    |               13 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[12][31]   | ifetc/register_reg[12][0]    |                9 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[28][31]   | ifetc/register_reg[28][31]_0 |               19 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[23][29]_0 | ifetc/register_reg[23][0]_0  |               14 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[13][31]   | ifetc/register_reg[13][0]    |               17 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/E[0]                   |                              |               20 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[17][31]   | ifetc/register_reg[17][0]    |               11 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[18][31]   | ifetc/register_reg[18][0]    |               16 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[9][31]    | ifetc/register_reg[9][0]     |               19 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[6][31]    | ifetc/register_reg[6][0]_0   |               18 |             32 |
+|  cpuclk/inst/clk_out1                | ifetc/register_reg[20][31]   | ifetc/register_reg[20][0]    |               13 |             32 |
+| ~cpuclk/inst/clk_out1                | ifetc/link_addr[31]_i_1_n_0  |                              |                9 |             32 |
+|  cpuclk/inst/clk_out1                |                              | keyboardu/u/key_cnt_i_2_n_0  |                9 |             33 |
+|  cpuclk/inst/clk_out1                |                              | rst_IBUF                     |               18 |             53 |
++--------------------------------------+------------------------------+------------------------------+------------------+----------------+
+
+
++--------+-----------------------+
+| Fanout | Number of ControlSets |
++--------+-----------------------+
+| 3      |                     1 |
+| 4      |                    13 |
+| 5      |                     3 |
+| 6      |                     3 |
+| 7      |                     3 |
+| 8      |                     5 |
+| 9      |                     1 |
+| 10     |                     2 |
+| 11     |                     1 |
+| 13     |                     6 |
+| 14     |                     1 |
+| 15     |                     3 |
+| 16+    |                    37 |
++--------+-----------------------+
+
+
