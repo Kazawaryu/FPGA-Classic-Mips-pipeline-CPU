@@ -4,11 +4,11 @@
 #寄存器初始化				
 start:
 	lui   $1,0xFFFF	                    
-        ori   $28,$1,0xF000         #设置$28=0xFFFFF000
-        lui   $12,0x0000               #$12=0
+    ori   $28,$1,0xF000         #设置$28=0xFFFFF000
+    lui   $12,0x0000               #$12=0
 
-        ori $27,$12,0x8000         #设置$27=0x00008000
-	#16
+    ori $27,$12,0x8000         #设置$27=0x00008000
+
 	ori $26,$12,0x0010         #$26=16
 	ori $19,$12,0x0001         #$19=1
 	ori $18,$12,0x0000         #$18=0
@@ -16,8 +16,8 @@ start:
 #检测高16位,定位到label
 main:
 	#lui $8,0xffff                        
-        #ori $8,$8,0xffff
-        #sw $8,0xC62($28)       #确认处于main状态 用于debug
+    #ori $8,$8,0xffff
+    #sw $8,0xC62($28)       #确认处于main状态 用于debug
 
 	lw $2,0xC72($28)            #获取左边八个拨码开关的值，即$2=样例编号
 	ori $13,$12,0x0000          #$13=24'b0,00000000
@@ -101,14 +101,23 @@ L5_reback:
 	beq $2,$11,L5_reback    #拨起左数第五个键回main
 	j main
 
-L6:
+L6: #signed: a < b 
+	slt $5,$3,$4
+L6_reback:
+	lui	$1,0x0000
+	ori $11,$1,0x0080
+	sw $5,0xC60($28)
+	lw $2,0Xc72($28)
+	beq $2,$11,L6_reback
 
-
-
-L7:
-    
-
-
+L7: #unsigned: a < b
+	sltu $5,$3,$4
+L7_reback:
+    lui	$1,0x0000
+	ori $11,$1,0x0080
+	sw $5,0xC60($28)
+	lw $2,0Xc72($28)
+	beq $2,$11,L7_reback
 
 L8_1:
 	lui   $1,0x0000	                  
