@@ -39,18 +39,15 @@ main:
 	j main
 
 L1:
-    #case : 000
 	lw $2,0xC72($28)
-	#(1)load the data from right 16bit
-	#20:origin
 	lw   $20,0xC70($28)
-        sw   $20,0xC60($28)            
+    sw   $20,0xC60($28)            
 	beq $2,$12,L1                #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
 	
     # 判断2次幂
     sub $23,$20,$19
     and $23,$20,$23              #n & (n-1) ? 0 
-    bne $23,$18,nothing
+    bne $23,$12,nothing
 
 show:
 	sw $19,0xC62($28)               #显示灯亮
@@ -64,13 +61,10 @@ nothing:
 	j main
 
 L2:
-    #case : 000
 	lw $2,0xC72($28)
-	#(1)load the data from right 16bit
-	#20:origin
 	lw   $20,0xC70($28)
-        sw   $20,0xC60($28)            
-	beq $2,$12,L1                #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
+    sw   $20,0xC60($28)            
+	beq $2,$12,L2                #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
 	
     # 判断奇数
     and $27,$20,$19
@@ -80,8 +74,8 @@ L2:
 L3: #a or b
 	or $5,$3,$4
 L3_reback:
-        lui   $1,0x0000	
-        ori   $11,$1,0x0060
+    lui   $1,0x0000	
+    ori   $11,$1,0x0060
 	sw $5,0xC60($28)
 	lw $2,0xC72($28)
 	beq $2,$11,L3_reback
@@ -90,8 +84,8 @@ L3_reback:
 L4: #a nor b
     nor $5,$3,$4
 L4_reback:
-        lui   $1,0x0000	
-        ori   $11,$1,0x0060
+    lui   $1,0x0000	
+    ori   $11,$1,0x0060
 	sw $5,0xC60($28)
 	lw $2,0xC72($28)
 	beq $2,$11,L4_reback
@@ -100,8 +94,8 @@ L4_reback:
 L5: #a xor b
 	xor $5,$3,$4
 L5_reback:
-        lui   $1,0x0000	
-        ori   $11,$1,0x0080
+    lui   $1,0x0000	
+    ori   $11,$1,0x0080
 	sw $5,0xC60($28)        #显示结果
 	lw $2,0xC72($28)
 	beq $2,$11,L5_reback    #拨起左数第五个键回main
@@ -117,18 +111,18 @@ L7:
 
 
 L8_1:
-        lui   $1,0x0000	                  
-        ori   $11,$1,0x0030    #$11=0x00000030
+	lui   $1,0x0000	                  
+    ori   $11,$1,0x0030    #$11=0x00000030
 	lw $3,0xC70($28)       #输入A到$3
-	sw $3,0xC60($28)      #显示A到
+	sw $3,0xC60($28)       #显示A
 	lw $2,0xC72($28)      
 	bne $2,$11,L8_1         #左数第四个键为确认键，往下执行
 
 L8_2:
-        lui   $1,0x0000	
-        ori   $11,$1,0x0030
+    lui   $1,0x0000	
+    ori   $11,$1,0x0030
 	lw $4,0xC70($28)
 	sw $4,0xC60($28)      #输入B，显示B  $4
 	lw $2,0xC72($28)
 	beq $2,$11,L8_2         
-	j main                          #拨起左数第五个键回main
+	j main                #拨起左数第五个键回main
