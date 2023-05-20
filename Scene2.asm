@@ -58,13 +58,151 @@ L4:
 
 
 
-L5：
+L5:
+	input1:
+	lw $2,0xC72($28)			#提交开关
+	lw $20,0xC70($28)			#$20=原始数据
+	sw $20,0xC60($28)           #数据显示
+	beq $2,$12,input1        #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
 
-L6：
+	input2:
+	lw $2,0xC72($28)			#提交开关
+	lw $21,0xC70($28)			#$20=原始数据
+	sw $21,0xC60($28)           #数据显示
+	beq $2,$12,input2         #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
 
-L7：
+	addu $3,$20,$21
 
-L8：
+	slt $4,$20,$zero
+	slt $5,$21,$zero
+	slt $6,$3,$zero
+	beq $4, $5, check_overflow
+	j no_overflow 
+	
+L6:
+input1:
+	lw $2,0xC72($28)			#提交开关
+	lw $20,0xC70($28)			#$20=原始数据
+	sw $20,0xC60($28)           #数据显示
+	beq $2,$12,input1        #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
+
+	input2:
+	lw $2,0xC72($28)			#提交开关
+	lw $21,0xC70($28)			#$20=原始数据
+	sw $21,0xC60($28)           #数据显示
+	beq $2,$12,input2         #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
+
+	subu $3,$20,$21
+
+	slt $4,$20,$zero
+	slt $5,$21,$zero
+	slt $6,$3,$zero
+	bne $4, $5, check_overflow
+	j no_overflow 
+
+L7:
+	input1:
+	lw $2,0xC72($28)			#提交开关
+	lw $20,0xC70($28)			#$20=原始数据
+	sw $20,0xC60($28)           #数据显示
+	beq $2,$12,input1        #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
+
+	input2:
+	lw $2,0xC72($28)			#提交开关
+	lw $21,0xC70($28)			#$20=原始数据
+	sw $21,0xC60($28)           #数据显示
+	beq $2,$12,input2         #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）    
+
+	slt $3,$12,$20	# 0: number>0
+	slt $4,$12,$21
+	beq $3,$4,same_sign
+
+	different_sign:
+	beq $3,$12,a_is_positive
+	b_is_positive:
+	ori $2,$21,0x0000
+	nor $1,$20,$12
+	addi $1,$1,1
+	a_is_positive:
+	ori $1,$20,0x0000
+	nor $2,$21,$12
+	addi $2,$2,1
+	j mul_pre
+
+
+	same_sign:
+	beq $3,$12,mul_pre
+	nor $1,$20,$12
+	addi $1,$1,1
+	nor $2,$21,$12
+	addi $2,$2,1
+	j mul_pre
+
+	mul_pre:
+	lui   $3,0x0000        
+	lui   $4,0x0000    
+	mul:
+	beq $4,$2 mul_end
+	add $3,$3,$1
+	addi $4,$4,1
+	j mul
+
+	mul_end:
+	sw $3,0x60($28)
+	j main
+
+L8:
+	input1:
+	lw $2,0xC72($28)			#提交开关
+	lw $20,0xC70($28)			#$20=原始数据
+	sw $20,0xC60($28)           #数据显示
+	beq $2,$12,input1        #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）
+
+	input2:
+	lw $2,0xC72($28)			#提交开关
+	lw $21,0xC70($28)			#$20=原始数据
+	sw $21,0xC60($28)           #数据显示
+	beq $2,$12,input2         #不停地读数字，直到确认键拨起（即前八个拨码开关不全是0）    
+
+	nor $1,$20,$12
+	addi $1,$1,1
+	nor $2,$21,$12
+	addi $2,$2,1
+
+	div_pre:
+	lui   $3,0x0000        
+	addi $4,$2,0
+	div:
+	blt $4,$2,div_end
+	sub $4,$4,$2
+	addi $3,$3,1
+	j div
+
+	div_end:
+	slt $5,$12,$20	# 0: number>0
+	slt $6,$12,$21
+	beq $5,$6,alternate_display
+
+	comp:
+	nor $3,$3,$12
+	addi $3,$3,1
+	beq $5,$12,alternate_display
+	nor $4,$4,$12
+	addi $4,$4,1
+
+	alternate_display:
+	sw $3,0xC60($28)
+	addi $6, $0, 10000000 
+	delay_loop:
+	subu $6, $6, 1
+	bnez $6, delay_loop
+	sw $4, 0xC60($28)
+	addi $6, $0, 10000000 
+	delay_loop:
+	subu $6, $6, 1
+	bnez $6, delay_loop
+	j main
+
 
 
 
@@ -105,7 +243,7 @@ n2:
 	addi $3,$3,-1			# n = n - 1
 	j Sum					# 递归调用子函数 sum(n-1) //jal
 
-	lw $3，0($10)			# 恢复参数 n
+	lw $3,0($10)			# 恢复参数 n
 	lw $11,4($10)			# 恢复返回地址
 
 	beq $21,$16,n3			# case3
@@ -114,12 +252,12 @@ n2:
 n3:
 	add $4,$4,$3			# 计算 sum(n) = n + sum(n-1)
 
-	bne $21,$19,n1_2		#case1
+	bne $21,$19,n1_2		# case1
 	addi $7,$7,1
-	beq $3,$20,Show			#case1:递归结束，显示出入栈次数和
+	beq $3,$20,Show			# case1:递归结束，显示出入栈次数和
 n1_2:	
 
-	beq $3,$20,main			#case2|3:递归结束，回到main状态
+	beq $3,$20,main			# case2|3:递归结束，回到main状态
 End:
 	addi $10,$10,8		 	# 释放栈空间
 	j $11					# 返回到调用者 //jr
@@ -144,6 +282,22 @@ Show:
 	beq $21,$16,n3
 
 
+
+check_overflow:
+	beq $4, $6,no_overflow
+	j overflow
+
+	overflow:
+	li $4, 1                  
+	j end_check_overflow
+
+	no_overflow:
+	li $4, 0                  
+
+	end_check_overflow:
+	sw $3, 0xC60($28)  
+	sw $4, 0xC62($28)  
+	j main
 
 
 
