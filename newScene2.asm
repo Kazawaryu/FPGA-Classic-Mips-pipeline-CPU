@@ -10,7 +10,7 @@ main:
     addi $24,$zero,0x32767         # 初始灯全亮，表示等待接收case输入
 switch:
 
-	addi $t9,$zero,0x880005
+	# addi $t9,$zero,0x880005 	# 测试case0，n=5
     andi $a0,$t9,0x700000
 
     andi $a1,$t9,0x800000   # 获取左第�??位，$a1用于确认提交case�??
