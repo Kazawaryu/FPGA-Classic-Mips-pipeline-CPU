@@ -18,7 +18,6 @@
 
 本项目是一个 **Classic Mips pipeline CPU**，由 Verilog 语言编写，Mips 汇编实现场景测试。
 
-<iframe src="//player.bilibili.com/player.html?aid=873256781&bvid=BV1uN4y1Q7Hj&cid=1264431212&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
 ### 项目架构
 
