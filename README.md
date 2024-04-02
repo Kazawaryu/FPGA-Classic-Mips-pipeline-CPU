@@ -262,7 +262,7 @@ git clone https://github.com/Kazawaryu/Simple_CPU_in_FPGA
 
 ## 示例
 
-想了解我们项目如何运行和使用的的，请参考 [演示视频](www.bilibili.com/video/BV1uN4y1Q7Hj)。
+想了解我们项目如何运行和使用的的，请参考<a href="https://www.bilibili.com/video/BV1uN4y1Q7Hj">演示视频</a>。
 
 ## 相关仓库
 
