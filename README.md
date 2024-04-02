@@ -16,7 +16,7 @@
 
 ## 项目介绍
 
-本项目是一个 **Classic Mips pipeline CPU**，由 Verilog 语言编写，Mips 汇编实现场景测试。
+本项目是一个 **Classic Mips pipeline CPU**，由 Verilog 语言编写，Mips 汇编实现场景测试。 我们在B站上次了项目的![讲解视频](https://www.bilibili.com/video/BV1uN4y1Q7Hj)。
 
 
 ### 项目架构
