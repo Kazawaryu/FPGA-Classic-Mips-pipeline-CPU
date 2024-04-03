@@ -1,6 +1,10 @@
-![image](https://github.com/Kazawaryu/FPGA-Classic-Mips-pipeline-CPU/assets/93501403/2cb2013d-c567-44a9-899e-fdf0f3bf46fb)# FPGA Classic Mips pipeline CPU
+<div align=center>
+![image](https://github.com/Kazawaryu/FPGA-Classic-Mips-pipeline-CPU/assets/93501403/2cb2013d-c567-44a9-899e-fdf0f3bf46fb)
+    
+# FPGA Classic Mips pipeline CPU   
 
 [![vivado version](https://img.shields.io/badge/Vivado%20version-2017.4-brightgreen?style=flat-square)](https://img.shields.io/badge/Vivado%20version-2017.4-brightgreen?style=flat-square)    [![mars version](https://img.shields.io/badge/Mars%20version-4.5-orange?style=flat-square)](https://img.shields.io/badge/Mars%20version-4.5-orange?style=flat-square)    [![mars version](https://img.shields.io/badge/Code%20version-1.2-blue?style=flat-square)](https://img.shields.io/badge/Code%20version-1.2-blue?style=flat-square)
+</div>
 
 ## 目录
 
