@@ -276,7 +276,7 @@ git clone https://github.com/Kazawaryu/Simple_CPU_in_FPGA
 
 ## 维护者
 
-[@Kazawaryu](https://github.com/Kazawaryu)	[@XavierYuhanLiu](https://github.com/xavieryuhanliu)	[@houfm](https://github.com/houfm)
+[@Kazawaryu](https://github.com/Kazawaryu)	[@XHeliosYuhanLiu](https://github.com/heliosyuhanliu)	[@houfm](https://github.com/houfm)
 
 ## 如何贡献
 
